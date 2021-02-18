@@ -1,0 +1,8 @@
+Crear ruteo y navbar
+Crear dos componentes (Dia e Historico)
+Personalizar el html Dia [ hacer impunts,labels,select,botones,H2,H3 ] 
+Personalizar Historico [ tabla , labels, impunts y date-picker]
+Crear los servicios y Vincular servicios con TS 
+Agregar las funciones al servicios
+Ver Api de cotizaciones (listo)
+ver si se puede agregar un componente mas con la evolucion dolar
