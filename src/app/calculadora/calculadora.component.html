@@ -1,1 +1,63 @@
-<p>calculadora works!</p>
+<br />
+<div class="botones">
+  <br />
+  <h5 class="dolarBlue">
+    Aca se muestra cotizacion dolar blue consumidas por la API
+  </h5>
+</div>
+
+<div class="titulos">
+  <h3>CAJA</h3>
+
+  <form class="example-form" [formGroup]="calculadoraForms">
+    <mat-form-field class="inputGeneralIzquierdo">
+      <mat-label>ARS</mat-label>
+      <input matInput type="number" formControlName="caja_ars" />
+    </mat-form-field>
+    <mat-form-field class="inputGeneralDerecho">
+      <mat-label>USD</mat-label>
+      <input matInput type="number" formControlName="caja_usd" />
+    </mat-form-field>
+    <mat-slide-toggle></mat-slide-toggle>
+
+    <br />
+    <br />
+    <br />
+    <h3>COTIZACION</h3>
+
+    <mat-form-field class="inputGeneralIzquierdo">
+      <mat-label>COMPRA</mat-label>
+      <input matInput type="number" formControlName="coti_compra" />
+    </mat-form-field>
+
+    <mat-form-field class="inputGeneralDerecho">
+      <mat-label>VENTA</mat-label>
+      <input matInput type="number" formControlName="coti_venta" />
+    </mat-form-field>
+
+    <br />
+    <br />
+    <br />
+    <br />
+    <mat-form-field appearance="fill" class="seleccion">
+      <mat-label>Select</mat-label>
+      <select matNativeControl [disabled]="" formControlName="tipo_accion">
+        <option value="" selected></option>
+        <option value="comprar">Comprar</option>
+        <option value="vender">Vender</option>
+      </select>
+    </mat-form-field>
+    <mat-form-field class="coticlase">
+      <mat-label>MONTO</mat-label>
+      <input matInput type="number" formControlName="monto" />
+    </mat-form-field>
+
+    <br />
+    <h2>$1.000</h2>
+    <br />
+    <br />
+
+    <button mat-raised-button class="botones">Actualizar Caja</button>
+    <button mat-raised-button class="espacioBotonIzq">CALCULAR</button>
+  </form>
+</div>

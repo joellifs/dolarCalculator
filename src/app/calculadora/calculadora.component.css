@@ -1,0 +1,41 @@
+.coticlase {
+  width: 60px;
+  margin-left: 35px;
+}
+.inputParcial {
+  width: 100px;
+}
+.inputGeneralIzquierdo {
+  width: 70px;
+  margin-right: 30px;
+}
+.inputGeneralDerecho {
+  width: 70px;
+  margin-left: 40px;
+  margin-right: 90px;
+}
+.seleccion {
+  width: 100px;
+}
+.botones {
+  background-color: #85bb65;
+}
+.dolarBlue {
+  background-color: #85bb65;
+  scroll-behavior: initial;
+}
+.espaciIZQ {
+  margin-left: 30px;
+}
+.titulos {
+  text-align: center;
+}
+.espacioBotonIzq {
+  margin-left: 50px;
+  background-color: #85bb65;
+}
+.selection {
+  opacity: 0.75;
+  font-size: 0.75em;
+  margin-right: 30px;
+}
