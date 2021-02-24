@@ -46,6 +46,7 @@
         <option value="comprar">Comprar</option>
         <option value="vender">Vender</option>
       </select>
+
     </mat-form-field>
     <mat-form-field class="coticlase">
       <mat-label>MONTO</mat-label>
@@ -53,11 +54,13 @@
     </mat-form-field>
 
     <br />
-    <h2>$1.000</h2>
+    <h2>$ {{resultado}}</h2>
     <br />
     <br />
 
-    <button mat-raised-button class="botones">Actualizar Caja</button>
-    <button mat-raised-button class="espacioBotonIzq">CALCULAR</button>
+    <button mat-raised-button class="botones" (click) = "actualizarCaja()" >Actualizar Caja</button>
+    <button mat-raised-button class="espacioBotonIzq" (click)="calcular()" [disabled]="!calculadoraForms.valid" >CALCULAR</button>
   </form>
 </div>
+
+

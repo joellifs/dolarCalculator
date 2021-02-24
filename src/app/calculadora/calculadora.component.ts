@@ -7,6 +7,8 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class CalculadoraComponent implements OnInit {
   calculadoraForms: FormGroup;
+  resultado = 0.0;
+  
 
   constructor(private formBuilder: FormBuilder) {}
 
@@ -20,4 +22,28 @@ export class CalculadoraComponent implements OnInit {
       monto: ['', Validators.required],
     });
   }
+
+actualizarCaja(){
+
+
+}
+
+// 1. sacar los datos del formulario.
+// 2. obtener tipo_accion.
+// 3. dependiendo tipo_accion es la operacion matematica a realizar.
+// 3.a. COMPRA -> resultado = coti_compra * monto.
+// 3.b. VENTA -> resultado = coti_venta * monto.
+
+calcular(){
+const calculadora= this.calculadoraForms.value;
+
+if (calculadora.tipo_accion == "comprar"){
+this.resultado = calculadora.coti_compra * calculadora.monto 
+
+} else if (calculadora.tipo_accion == "vender") {
+  this.resultado = calculadora.coti_venta * calculadora.monto;
+}
+
+}
+
 }
