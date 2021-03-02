@@ -23,9 +23,29 @@ export class CalculadoraComponent implements OnInit {
     });
   }
 
+
+// 1. saber el monto de caja_ars caja_usd y monto caja.
+// 2. compra o venta.
+// 3. compra: caja_usd = caja_usd + monto; caja_ars = caja_ars - resultado.
+// 4. venta: caja_usd = caja_usd - monto; caja_ars = caja_ars + resultado.
+// 5. actualizar input caja.
+// 6. resetear operacion.
+
 actualizarCaja(){
+const calculadora= this.calculadoraForms.value;
 
+if (calculadora.tipo_accion == "comprar"){
+  calculadora.caja_usd = calculadora.caja_usd + calculadora.monto;
+  calculadora.caja_ars = calculadora.caja_ars - this.resultado;
+  
+  } else if (calculadora.tipo_accion == "vender") {
+    calculadora.caja_usd = calculadora.caja_usd - calculadora.monto;
+    calculadora.caja_ars = calculadora.caja_ars + this.resultado;
+  }
+console.log("Desde funcio actualizarCaja",calculadora)
 
+//caja_ars se actualiza con lo que calculamos arriba en caja_ars.
+this.calculadoraForms.patchValue({caja_ars: calculadora.caja_ars, caja_usd: calculadora.caja_usd})
 }
 
 // 1. sacar los datos del formulario.
@@ -35,14 +55,18 @@ actualizarCaja(){
 // 3.b. VENTA -> resultado = coti_venta * monto.
 
 calcular(){
+//calculadora es un objeto que esta guardando todo lo que tiene el formulario.
 const calculadora= this.calculadoraForms.value;
-
+console.log("Desde funcion calcular",calculadora)
 if (calculadora.tipo_accion == "comprar"){
 this.resultado = calculadora.coti_compra * calculadora.monto 
 
 } else if (calculadora.tipo_accion == "vender") {
   this.resultado = calculadora.coti_venta * calculadora.monto;
 }
+
+
+
 
 }
 
