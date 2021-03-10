@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./historico.component.css']
 })
 export class HistoricoComponent implements OnInit {
-
+dataSource= [];
+displayedColumns=["hora", "operacion", "usd", "ars"];
   constructor() { }
 
   ngOnInit(): void {
   }
+
 
 }

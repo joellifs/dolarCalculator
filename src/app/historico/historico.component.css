@@ -1,0 +1,14 @@
+table {
+  width: 100%;
+}
+
+.row {
+   width: 100%;
+   text-align: center; 
+}
+  
+
+.block {
+  width: 100px;
+  display: inline-block; 
+}

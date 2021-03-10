@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-calculadora',
   templateUrl: './calculadora.component.html',
@@ -9,7 +10,7 @@ export class CalculadoraComponent implements OnInit {
   calculadoraForms: FormGroup;
   resultado = 0.0;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.calculadoraForms = this.formBuilder.group({
@@ -44,6 +45,7 @@ export class CalculadoraComponent implements OnInit {
 
     if (resultadoCajaArs < 0 || resultadoCajaUsd < 0) {
       console.log('Sin saldo en Cajas ');
+      this.mostrarMensaje("SIN SALDO EN CAJAS")
     } else {
       //caja_ars se actualiza con lo que calculamos arriba en caja_ars.
       this.calculadoraForms.patchValue({
@@ -51,7 +53,7 @@ export class CalculadoraComponent implements OnInit {
         caja_usd: resultadoCajaUsd,
       });
     }
-  }
+  } // fin funcion actualizar caja
 
   // 1. sacar los datos del formulario.
   // 2. obtener tipo_accion.
@@ -68,5 +70,18 @@ export class CalculadoraComponent implements OnInit {
     } else if (calculadora.tipo_accion == 'vender') {
       this.resultado = calculadora.coti_venta * calculadora.monto;
     }
-  }
+  } // fin funcion calcular
+
+
+
+  mostrarMensaje(message: string){
+    this._snackBar.open(message,"", {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: 'bottom',
+      panelClass:["alineaMensaje"],
+    });
+  }// fin de mostrar mensaje.
+
+
 }
