@@ -123,5 +123,8 @@
       }
     }
   },
-  "defaultProject": "dolarCalculator"
+  "defaultProject": "dolarCalculator",
+  "cli": {
+    "analytics": "93191e67-ff80-4577-bc23-8fe496273b30"
+  }
 }
