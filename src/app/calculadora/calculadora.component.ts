@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { HistoricoService } from '../historico.service';
 @Component({
   selector: 'app-calculadora',
   templateUrl: './calculadora.component.html',
@@ -10,7 +11,11 @@ export class CalculadoraComponent implements OnInit {
   calculadoraForms: FormGroup;
   resultado = 0.0;
 
-  constructor(private formBuilder: FormBuilder, private _snackBar: MatSnackBar) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private historicoService: HistoricoService
+  ) {}
 
   ngOnInit(): void {
     this.calculadoraForms = this.formBuilder.group({
@@ -45,7 +50,7 @@ export class CalculadoraComponent implements OnInit {
 
     if (resultadoCajaArs < 0 || resultadoCajaUsd < 0) {
       console.log('Sin saldo en Cajas ');
-      this.mostrarMensaje("SIN SALDO EN CAJAS")
+      this.mostrarMensaje('SIN SALDO EN CAJAS');
     } else {
       //caja_ars se actualiza con lo que calculamos arriba en caja_ars.
       this.calculadoraForms.patchValue({
@@ -53,7 +58,18 @@ export class CalculadoraComponent implements OnInit {
         caja_usd: resultadoCajaUsd,
       });
     }
-  } // fin funcion actualizar caja
+    // Cree un objeto con los atributos de la operación
+    const objeto_resultadoFinal = {
+      caja_ars: resultadoCajaArs,
+      caja_usd: resultadoCajaUsd,
+      hora: Date.now(),
+      operacion: calculadora.tipo_accion,
+    };
+    // Mandamos el objeto al serivicio
+    this.historicoService.cargarResultado(objeto_resultadoFinal);
+  }
+
+  // fin funcion actualizar caja
 
   // 1. sacar los datos del formulario.
   // 2. obtener tipo_accion.
@@ -72,16 +88,12 @@ export class CalculadoraComponent implements OnInit {
     }
   } // fin funcion calcular
 
-
-
-  mostrarMensaje(message: string){
-    this._snackBar.open(message,"", {
+  mostrarMensaje(message: string) {
+    this._snackBar.open(message, '', {
       duration: 5000,
-      horizontalPosition: "center",
+      horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      panelClass:["alineaMensaje"],
+      panelClass: ['alineaMensaje'],
     });
-  }// fin de mostrar mensaje.
-
-
+  } // fin de mostrar mensaje.
 }

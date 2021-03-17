@@ -1,32 +1,19 @@
 import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_compiler';
 import { Component, OnInit } from '@angular/core';
+import { HistoricoService } from '../historico.service';
 
 @Component({
   selector: 'app-historico',
   templateUrl: './historico.component.html',
-  styleUrls: ['./historico.component.css']
+  styleUrls: ['./historico.component.css'],
 })
-
 export class HistoricoComponent implements OnInit {
-element: any = {
-  hora: "12:00",
-  operacion: "venta",
-  usd: "1",
-  ars: "1",
-} ;
-
-elemen2:any = {
-  hora: "13:00",
-  operacion: "venta",
-  usd: "2",
-  ars: "2",
-};
-  dataSource= [this.element, this.elemen2    ];
-displayedColumns=["hora", "operacion", "usd", "ars"];
-  constructor() { }
+  vectorResultados: any[] = [];
+  displayedColumns = ['hora', 'operacion', 'caja_usd', 'caja_ars'];
+  constructor(private historicoService: HistoricoService) {}
 
   ngOnInit(): void {
+    // los resultados del servicio los pongo en el vector
+    this.vectorResultados = this.historicoService.obtenerResultados();
   }
-
-
 }
