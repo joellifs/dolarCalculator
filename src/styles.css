@@ -10,6 +10,9 @@ body {
 }
 
 .alineaMensaje {
-  margin-top: 1000px;
   background-color: lightcoral;
+}
+
+.alineaMensaje2 {
+  background-color: #85bb65;
 }

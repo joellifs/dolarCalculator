@@ -40,22 +40,25 @@ export class CalculadoraComponent implements OnInit {
     let resultadoCajaUsd = 0;
     let resultadoCajaArs = 0;
 
-    if (calculadora.tipo_accion == 'comprar') {
+    if (calculadora.tipo_accion == 'compra') {
       resultadoCajaUsd = calculadora.caja_usd + calculadora.monto;
       resultadoCajaArs = calculadora.caja_ars - this.resultado;
-    } else if (calculadora.tipo_accion == 'vender') {
+    } else if (calculadora.tipo_accion == 'venta') {
       resultadoCajaUsd = calculadora.caja_usd - calculadora.monto;
       resultadoCajaArs = calculadora.caja_ars + this.resultado;
     }
 
     if (resultadoCajaArs < 0 || resultadoCajaUsd < 0) {
-      console.log('Sin saldo en Cajas ');
-      this.mostrarMensaje('SIN SALDO EN CAJAS');
+      this.mostrarMensaje('SIN SALDO EN CAJAS', 'alineaMensaje', 2000);
     } else {
       //caja_ars se actualiza con lo que calculamos arriba en caja_ars.
+      this.mostrarMensaje('CAJA ACTUALIZADA', 'alineaMensaje2', 4000);
+
       this.calculadoraForms.patchValue({
         caja_ars: resultadoCajaArs,
         caja_usd: resultadoCajaUsd,
+        tipo_accion: '',
+        monto: '',
       });
     }
     // Cree un objeto con los atributos de la operación
@@ -81,19 +84,19 @@ export class CalculadoraComponent implements OnInit {
     //calculadora es un objeto que esta guardando todo lo que tiene el formulario.
     const calculadora = this.calculadoraForms.value;
     console.log('Desde funcion calcular', calculadora);
-    if (calculadora.tipo_accion == 'comprar') {
+    if (calculadora.tipo_accion == 'compra') {
       this.resultado = calculadora.coti_compra * calculadora.monto;
-    } else if (calculadora.tipo_accion == 'vender') {
+    } else if (calculadora.tipo_accion == 'venta') {
       this.resultado = calculadora.coti_venta * calculadora.monto;
     }
   } // fin funcion calcular
 
-  mostrarMensaje(message: string) {
+  mostrarMensaje(message: string, nombreStylo: string, duracion: number) {
     this._snackBar.open(message, '', {
-      duration: 5000,
+      duration: duracion,
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
-      panelClass: ['alineaMensaje'],
+      panelClass: [nombreStylo],
     });
   } // fin de mostrar mensaje.
 }

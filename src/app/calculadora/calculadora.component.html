@@ -6,7 +6,7 @@
   </h5>
 </div>
 
-<div class="titulos ">
+<div class="titulos">
   <h3>CAJA</h3>
 
   <form class="example-form" [formGroup]="calculadoraForms">
@@ -43,10 +43,9 @@
       <mat-label>Select</mat-label>
       <select matNativeControl [disabled]="" formControlName="tipo_accion">
         <option value="" selected></option>
-        <option value="comprar">Comprar</option>
-        <option value="vender">Vender</option>
+        <option value="compra">Compra</option>
+        <option value="venta">Venta</option>
       </select>
-
     </mat-form-field>
     <mat-form-field class="coticlase">
       <mat-label>MONTO</mat-label>
@@ -54,13 +53,20 @@
     </mat-form-field>
 
     <br />
-    <h2>$ {{resultado}}</h2>
+    <h2>$ {{ resultado }}</h2>
     <br />
     <br />
 
-    <button mat-raised-button class="botones" (click) = "actualizarCaja()" >Actualizar Caja</button>
-    <button mat-raised-button class="espacioBotonIzq" (click)="calcular()" [disabled]="!calculadoraForms.valid" >CALCULAR</button>
+    <button
+      mat-raised-button
+      class="botones"
+      (click)="actualizarCaja()"
+      [disabled]="!calculadoraForms.valid"
+    >
+      Actualizar Caja
+    </button>
+    <button mat-raised-button class="espacioBotonIzq" (click)="calcular()">
+      CALCULAR
+    </button>
   </form>
 </div>
-
-
