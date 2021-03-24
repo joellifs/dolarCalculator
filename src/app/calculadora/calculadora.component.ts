@@ -60,7 +60,7 @@ export class CalculadoraComponent implements OnInit {
         tipo_accion: '',
         monto: '',
       });
-    }
+    
     // Cree un objeto con los atributos de la operación
     const objeto_resultadoFinal = {
       caja_ars: resultadoCajaArs,
@@ -70,6 +70,7 @@ export class CalculadoraComponent implements OnInit {
     };
     // Mandamos el objeto al serivicio
     this.historicoService.cargarResultado(objeto_resultadoFinal);
+    }
   }
 
   // fin funcion actualizar caja
