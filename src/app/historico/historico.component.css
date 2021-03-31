@@ -3,12 +3,11 @@ table {
 }
 
 .row {
-   width: 100%;
-   text-align: center; 
+  width: 100%;
+  text-align: center;
 }
-  
 
 .block {
   width: 100px;
-  display: inline-block; 
+  display: inline-block;
 }

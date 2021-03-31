@@ -10,6 +10,7 @@ import { HistoricoService } from '../historico.service';
 export class CalculadoraComponent implements OnInit {
   calculadoraForms: FormGroup;
   resultado = 0.0;
+  cotizacion = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,16 +61,18 @@ export class CalculadoraComponent implements OnInit {
         tipo_accion: '',
         monto: '',
       });
-    
-    // Cree un objeto con los atributos de la operación
-    const objeto_resultadoFinal = {
-      caja_ars: resultadoCajaArs,
-      caja_usd: resultadoCajaUsd,
-      hora: Date.now(),
-      operacion: calculadora.tipo_accion,
-    };
-    // Mandamos el objeto al serivicio
-    this.historicoService.cargarResultado(objeto_resultadoFinal);
+
+      // Cree un objeto con los atributos de la operación
+      const objeto_resultadoFinal = {
+        caja_ars: resultadoCajaArs,
+        caja_usd: resultadoCajaUsd,
+        monto: calculadora.monto,
+        hora: Date.now(),
+        operacion: calculadora.tipo_accion,
+        cotizacion: this.cotizacion,
+      };
+      // Mandamos el objeto al serivicio
+      this.historicoService.cargarResultado(objeto_resultadoFinal);
     }
   }
 
@@ -84,11 +87,14 @@ export class CalculadoraComponent implements OnInit {
   calcular() {
     //calculadora es un objeto que esta guardando todo lo que tiene el formulario.
     const calculadora = this.calculadoraForms.value;
+
     console.log('Desde funcion calcular', calculadora);
     if (calculadora.tipo_accion == 'compra') {
       this.resultado = calculadora.coti_compra * calculadora.monto;
+      this.cotizacion = calculadora.coti_compra;
     } else if (calculadora.tipo_accion == 'venta') {
       this.resultado = calculadora.coti_venta * calculadora.monto;
+      this.cotizacion = calculadora.coti_venta;
     }
   } // fin funcion calcular
 
