@@ -27,6 +27,11 @@ export class CalculadoraComponent implements OnInit {
       tipo_accion: ['', Validators.required],
       monto: ['', Validators.required],
     });
+
+    this.calculadoraForms.patchValue({
+      caja_ars: this.historicoService.obtenerCajaARS(),
+      caja_usd: this.historicoService.obtenerCajaUSD(),
+    });
   }
 
   // 1. saber el monto de caja_ars caja_usd y monto caja.

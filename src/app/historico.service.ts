@@ -6,18 +6,27 @@ import { Injectable } from '@angular/core';
 export class HistoricoService {
   arreglo_resultados: any[] = [];
   arreglo_dolarBlue: any[] = [];
+  estado_cajaUSD = 0;
+  estado_cajaARS = 0;
 
   // Traer los objetos ( operación ) de calculadora, al tocar boton actualizar caja
   constructor() {}
 
   cargarResultado(objeto_resultadoFinal: any) {
     this.arreglo_resultados.push(objeto_resultadoFinal);
+    this.estado_cajaUSD = objeto_resultadoFinal.caja_usd;
+    this.estado_cajaARS = objeto_resultadoFinal.caja_ars;
   }
-  // Salen los objetos al componente Historico
+  // Sale el arreglo del servicio
   obtenerResultados() {
     return this.arreglo_resultados;
   }
-
+  obtenerCajaUSD() {
+    return this.estado_cajaUSD;
+  }
+  obtenerCajaARS() {
+    return this.estado_cajaARS;
+  }
   // EMPIEZO A CONSUMIR API DOLAR
 
   //   obtenerCotizacionBlue() {

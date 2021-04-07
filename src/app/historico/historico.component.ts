@@ -14,6 +14,8 @@ export class HistoricoComponent implements OnInit {
   totalARS = 0;
   cierreUSD = 0;
   cierreARS = 0;
+  inicioUSD = 0;
+  inicioARS = 0;
   constructor(private historicoService: HistoricoService) {}
 
   ngOnInit(): void {
@@ -38,5 +40,8 @@ export class HistoricoComponent implements OnInit {
     this.cierreARS = this.vectorResultados[
       this.vectorResultados.length - 1
     ].caja_ars;
+
+    this.inicioUSD = this.cierreUSD - this.totalUSD;
+    this.inicioARS = this.cierreARS - this.totalARS;
   }
 }
