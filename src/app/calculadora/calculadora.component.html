@@ -12,13 +12,13 @@
   <form class="example-form" [formGroup]="calculadoraForms">
     <mat-form-field class="inputGeneralIzquierdo">
       <mat-label>ARS</mat-label>
-      <input matInput type="number" formControlName="caja_ars" />
+      <input matInput type="number" formControlName="caja_ars" [readonly]="isToogled"/>
     </mat-form-field>
     <mat-form-field class="inputGeneralDerecho">
       <mat-label>USD</mat-label>
-      <input matInput type="number" formControlName="caja_usd" />
+      <input matInput type="number" formControlName="caja_usd" [readonly]="isToogled" />
     </mat-form-field>
-    <mat-slide-toggle></mat-slide-toggle>
+    <mat-slide-toggle (toggleChange)="onToogleChange()"></mat-slide-toggle>
 
     <br />
     <br />

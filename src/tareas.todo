@@ -1,0 +1,4 @@
+funcionalidad toogle:
+    ✔ buscar como capturar el evento de click en angular material @done (14/4/2021 14:57:31)
+    ✔ crear una funcion que se dispare cuando se mueve el toogle @done (14/4/2021 14:57:42)
+    ✔ definir la funcion para que bloquee o desbloquee los input de las cajas @done (14/4/2021 15:09:19)

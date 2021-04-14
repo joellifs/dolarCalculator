@@ -11,6 +11,7 @@ export class CalculadoraComponent implements OnInit {
   calculadoraForms: FormGroup;
   resultado = 0.0;
   cotizacion = 0;
+  isToogled= false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -111,4 +112,10 @@ export class CalculadoraComponent implements OnInit {
       panelClass: [nombreStylo],
     });
   } // fin de mostrar mensaje.
+  
+  onToogleChange() {
+    this.isToogled= !this.isToogled;
+
+  }
+
 }
