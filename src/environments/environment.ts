@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    apiKey: 'AIzaSyBgl8xzWAJ7rqGHfhTJP9j8LaULpvSL9ng',
+    authDomain: "dolarcalculator.firebaseapp.com",
+    databaseURL: '<your-database-URL>',
+    projectId: "dolarcalculator",
+    storageBucket: "dolarcalculator.appspot.com",
+    messagingSenderId: "221637139246",
+    appId: "1:221637139246:web:42316397564778c36df8bf",
+    measurementId: "G-LK79XST5CQ",
+  }
 };
 
 /*

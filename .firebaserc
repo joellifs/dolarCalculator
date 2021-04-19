@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "dolarcalculator": {
+      "hosting": {
+        "dolarCalculator": [
+          "dolarcalculator"
+        ]
+      }
+    }
+  }
+}
