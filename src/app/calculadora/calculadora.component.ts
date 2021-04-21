@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HistoricoService } from '../historico.service';
-import { AngularFirestore } from '@angular/fire/firestore';
+
 
 @Component({
   selector: 'app-calculadora',
@@ -19,8 +19,8 @@ export class CalculadoraComponent implements OnInit {
     private formBuilder: FormBuilder,
     private _snackBar: MatSnackBar,
     private historicoService: HistoricoService,
-    private firestore: AngularFirestore,
-  ) { this.firestore.collection("operaciones").valueChanges().subscribe(console.log);  }
+    
+  ) {}
 
   ngOnInit(): void {
     this.calculadoraForms = this.formBuilder.group({

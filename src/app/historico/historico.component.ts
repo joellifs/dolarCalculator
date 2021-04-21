@@ -36,12 +36,16 @@ export class HistoricoComponent implements OnInit {
     }
     this.cierreUSD = this.vectorResultados[
       this.vectorResultados.length - 1
-    ].caja_usd;
+    ]?.caja_usd;
     this.cierreARS = this.vectorResultados[
       this.vectorResultados.length - 1
-    ].caja_ars;
+    ]?.caja_ars;
 
     this.inicioUSD = this.cierreUSD - this.totalUSD;
     this.inicioARS = this.cierreARS - this.totalARS;
+  }
+
+  convertirHora(hora){
+    return hora.toDate();
   }
 }

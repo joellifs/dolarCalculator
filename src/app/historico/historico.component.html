@@ -3,7 +3,7 @@
   <ng-container matColumnDef="hora">
     <th mat-header-cell *matHeaderCellDef>HORA</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.hora | date: " hh:mm" }}
+      {{ convertirHora(element.hora) | date: " hh:mm" }}
     </td>
   </ng-container>
 

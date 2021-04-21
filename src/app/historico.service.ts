@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
@@ -10,10 +12,20 @@ export class HistoricoService {
   estado_cajaARS = 0;
 
   // Traer los objetos ( operación ) de calculadora, al tocar boton actualizar caja
-  constructor() {}
+  constructor(
+    private firestore: AngularFirestore,
+  ) {
+    //cuando haya un cambio en la coleccion "operaciones", guardo los datos en arreglo_resultado,
+    this.firestore.collection("operaciones").valueChanges().subscribe( (data ) => {
+      
+      this.arreglo_resultados = data;
+    })
+  }
 
   cargarResultado(objeto_resultadoFinal: any) {
-    this.arreglo_resultados.push(objeto_resultadoFinal);
+    
+    //agrega en la base de datos el objeto resultado final
+    this.firestore.collection("operaciones").add(objeto_resultadoFinal);
     this.estado_cajaUSD = objeto_resultadoFinal.caja_usd;
     this.estado_cajaARS = objeto_resultadoFinal.caja_ars;
   }

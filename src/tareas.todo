@@ -2,3 +2,9 @@ funcionalidad toogle:
     ✔ buscar como capturar el evento de click en angular material @done (14/4/2021 14:57:31)
     ✔ crear una funcion que se dispare cuando se mueve el toogle @done (14/4/2021 14:57:42)
     ✔ definir la funcion para que bloquee o desbloquee los input de las cajas @done (14/4/2021 15:09:19)
+
+
+conexion BD: 
+    ✔ llenar el vector del servicio con los datos de la base de datos. @done (21/4/2021 15:01:55)
+    ✔ cada vez que se actualice caja enviar los datos a la base de datos. @done (21/4/2021 15:01:58)
+    ☐ cambiar formato de hora.
