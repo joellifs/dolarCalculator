@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
+
 //import { HttpClient, HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
@@ -15,14 +16,17 @@ export class HistoricoService {
   constructor(
     private firestore: AngularFirestore,
   ) {
-    //cuando haya un cambio en la coleccion "operaciones", guardo los datos en arreglo_resultado,
-    this.firestore.collection("operaciones").valueChanges().subscribe( (data ) => {
+    //cuando haya un cambio en la coleccion "operaciones", guardo los datos en arreglo_resultado.
+    //data = es el conjunto de documentos que estan guardados dentro de la coleccion "operaciones".
+    // los resultados los ordenamos por hora.
+    this.firestore.collection("operaciones",  ref => ref.orderBy('hora')).valueChanges().subscribe( (data ) => {
       
       this.arreglo_resultados = data;
     })
   }
 
   cargarResultado(objeto_resultadoFinal: any) {
+    objeto_resultadoFinal.hora = new Date();
     
     //agrega en la base de datos el objeto resultado final
     this.firestore.collection("operaciones").add(objeto_resultadoFinal);
