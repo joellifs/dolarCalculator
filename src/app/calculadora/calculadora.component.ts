@@ -49,6 +49,7 @@ export class CalculadoraComponent implements OnInit {
     const calculadora = this.calculadoraForms.value;
     let resultadoCajaUsd = 0;
     let resultadoCajaArs = 0;
+    console.log("caja_ars",this.calculadoraForms.value["caja_ars"]);
 
     if (calculadora.tipo_accion == 'compra') {
       resultadoCajaUsd = calculadora.caja_usd + calculadora.monto;
@@ -64,6 +65,18 @@ export class CalculadoraComponent implements OnInit {
       //caja_ars se actualiza con lo que calculamos arriba en caja_ars.
       this.mostrarMensaje('CAJA ACTUALIZADA', 'alineaMensaje2', 4000);
 
+      // Cree un objeto con los atributos de la operación
+      const objeto_resultadoFinal = {
+
+        caja_ars: this.calculadoraForms.value["caja_ars"],
+        caja_usd: this.calculadoraForms.value["caja_usd"],
+        monto: calculadora.monto,
+        hora: Date.now(),
+        operacion: calculadora.tipo_accion,
+        cotizacion: this.cotizacion,
+      };
+
+      // se actualiza la parte visual de las cajas.
       this.calculadoraForms.patchValue({
         caja_ars: resultadoCajaArs,
         caja_usd: resultadoCajaUsd,
@@ -71,16 +84,8 @@ export class CalculadoraComponent implements OnInit {
         monto: '',
       });
 
-      // Cree un objeto con los atributos de la operación
-      const objeto_resultadoFinal = {
-        caja_ars: resultadoCajaArs,
-        caja_usd: resultadoCajaUsd,
-        monto: calculadora.monto,
-        hora: Date.now(),
-        operacion: calculadora.tipo_accion,
-        cotizacion: this.cotizacion,
-      };
-      // Mandamos el objeto al serivicio
+      
+      // Mandamos el objeto al servicio
       this.historicoService.cargarResultado(objeto_resultadoFinal);
     }
   }

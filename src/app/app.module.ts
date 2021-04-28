@@ -16,6 +16,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 //configuracion firebase
 import { AngularFireModule } from '@angular/fire';
@@ -46,6 +48,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
     MatTableModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -8,6 +8,9 @@ conexion BD:
     ✔ llenar el vector del servicio con los datos de la base de datos. @done (21/4/2021 15:01:55)
     ✔ cada vez que se actualice caja enviar los datos a la base de datos. @done (21/4/2021 15:01:58)
     ✔ cambiar formato de hora. @done (26/4/2021 14:57:39)
-    ☐ guardar inicios de caja en firebase.
+    ✔ guardar inicios de caja en firebase. @done (28/4/2021 15:06:22)
     ☐ conectarnos con la api de las cotizaciones.
+    ☐ filtrar historico por fecha.
+    ✔ agregar componente de calendario @done (28/4/2021 15:06:49)
+
     

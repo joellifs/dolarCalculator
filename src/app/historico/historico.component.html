@@ -1,3 +1,12 @@
+<!--calendario -->
+
+<mat-form-field class= "margen" appearance="fill">
+  <mat-label>Consultar fecha</mat-label>
+  <input matInput [matDatepicker]="picker">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+</mat-form-field>
+
 <table mat-table [dataSource]="vectorResultados" class="mat-elevation-z8">
   <!-- HORA Column -->
   <ng-container matColumnDef="hora">

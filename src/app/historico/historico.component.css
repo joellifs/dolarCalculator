@@ -11,3 +11,7 @@ table {
   width: 100px;
   display: inline-block;
 }
+
+.margen {
+  margin-top: 5px;
+}
