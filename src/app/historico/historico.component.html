@@ -2,7 +2,8 @@
 
 <mat-form-field class= "margen" appearance="fill">
   <mat-label>Consultar fecha</mat-label>
-  <input matInput [matDatepicker]="picker">
+  <input matInput [matDatepicker]="picker"
+  (dateInput)="clickFecha('input', $event)">
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>

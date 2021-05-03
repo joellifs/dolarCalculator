@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HistoricoService } from '../historico.service';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 
 @Component({
   selector: 'app-historico',
@@ -47,4 +48,10 @@ export class HistoricoComponent implements OnInit {
   convertirHora(hora){
     return hora.toDate();
   }
+
+  clickFecha(type: string, event: MatDatepickerInputEvent<Date>) {
+    console.log(event.value);
+    this.historicoService.filtrarFecha(event.value);
+  }
+
 }

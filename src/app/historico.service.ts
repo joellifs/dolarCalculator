@@ -1,3 +1,4 @@
+import { ConstantPool } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
@@ -52,4 +53,11 @@ export class HistoricoService {
   //   retornoBlue() {
   //     return this.arreglo_dolarBlue;
   //   }
+
+  filtrarFecha(fecha:Date){
+    this.firestore.collection("operaciones",  ref => ref.where('hora', '>=' , fecha)).valueChanges().subscribe( (data ) => {
+      
+     console.log(data);
+    })
+  }
 }
