@@ -50,7 +50,7 @@ export class HistoricoComponent implements OnInit {
   }
 
   clickFecha(type: string, event: MatDatepickerInputEvent<Date>) {
-    console.log(event.value);
+    
     this.historicoService.filtrarFecha(event.value);
   }
 

@@ -55,9 +55,12 @@ export class HistoricoService {
   //   }
 
   filtrarFecha(fecha:Date){
-    this.firestore.collection("operaciones",  ref => ref.where('hora', '>=' , fecha)).valueChanges().subscribe( (data ) => {
-      
-     console.log(data);
+    let maniana = new Date(fecha);
+    maniana.setDate(maniana.getDate() + 1);
+   
+    this.firestore.collection("operaciones",  ref => ref.where('hora', '>=' ,fecha).where('hora', '<' ,maniana)).valueChanges().subscribe( (data ) => {
+    console.log(data);
+    this.arreglo_resultados = data;
     })
   }
 }
